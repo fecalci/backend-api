@@ -8,6 +8,8 @@ var BebeSchema = new mongoose.Schema({
     sexo: String,
     peso: String,
     altura: String,
+    enfermedad: Array,
+    alergias:Array,
     fecha: Date
 })
 

@@ -43,6 +43,8 @@ exports.createBebe = async function (req, res, next) {
         peso: req.body.peso,
         altura: req.body.altura,
         fecha: req.body.fecha,
+        enfermedad:[""],
+        alergias:[""]
     }
         try {
             // Calling the Service function with the new object from the Request Body
