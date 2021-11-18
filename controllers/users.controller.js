@@ -40,18 +40,26 @@ exports.createUser = async function (req, res, next) {
     console.log("llegue al controller",req.body)
     var User = {
         name: req.body.name,
+        apellido:req.body.apellido,
         email: req.body.email,
-        password: req.body.password
+        telefono: req.body.telefono,
+        dni: req.body.dni,
+        password: req.body.password,
+        passwordRepetida: req.body.passwordRepetida
     }
-    try {
-        // Calling the Service function with the new object from the Request Body
-        var createdUser = await UserService.createUser(User)
-        return res.status(201).json({createdUser, message: "Succesfully Created User"})
-    } catch (e) {
-        //Return an Error Response Message with Code and the Error Message.
-        console.log(e)
-        return res.status(400).json({status: 400, message: "User Creation was Unsuccesfull"})
+    if (User.password==User.passwordRepetida){
+        try {
+            // Calling the Service function with the new object from the Request Body
+            var createdUser = await UserService.createUser(User)
+            return res.status(201).json({createdUser, message: "Succesfully Created User"})
+        } catch (e) {
+            //Return an Error Response Message with Code and the Error Message.
+            console.log(e)
+            return res.status(400).json({status: 400, message: "User Creation was Unsuccesfull"})
+        }
     }
+    else
+        return res.status(400).json({status: 400, message: "Not matching Password"})
 }
 
 exports.updateUser = async function (req, res, next) {
