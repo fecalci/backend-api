@@ -109,7 +109,7 @@ exports.loginUser = async function (user) {
             email: user.email
         });
         var passwordIsValid = bcrypt.compareSync(user.password, _details.password);
-        if (!passwordIsValid) throw Error("Invalid username/password")
+        if (!passwordIsValid) return 0
 
         var token = jwt.sign({
             id: _details._id
