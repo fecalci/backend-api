@@ -10,7 +10,9 @@ var BebeSchema = new mongoose.Schema({
     altura: String,
     enfermedad: Array,
     alergias:Array,
-    fecha: Date
+    fecha: Date,
+    sangre:String,
+    cabeza:String
 })
 
 BebeSchema.plugin(mongoosePaginate)

@@ -44,22 +44,17 @@ exports.createUser = async function (req, res, next) {
         email: req.body.email,
         telefono: req.body.telefono,
         dni: req.body.dni,
-        password: req.body.password,
-        passwordRepetida: req.body.passwordRepetida
+        password: req.body.password
     }
-    if (User.password==User.passwordRepetida){
-        try {
-            // Calling the Service function with the new object from the Request Body
-            var createdUser = await UserService.createUser(User)
-            return res.status(201).json({createdUser, message: "Succesfully Created User"})
-        } catch (e) {
-            //Return an Error Response Message with Code and the Error Message.
-            console.log(e)
-            return res.status(400).json({status: 400, message: "User Creation was Unsuccesfull"})
-        }
+    try {
+        // Calling the Service function with the new object from the Request Body
+        var createdUser = await UserService.createUser(User)
+        return res.status(201).json({createdUser, message: "Succesfully Created User"})
+    } catch (e) {
+        //Return an Error Response Message with Code and the Error Message.
+        console.log(e)
+        return res.status(400).json({status: 400, message: "User Creation was Unsuccesfull"})
     }
-    else
-        return res.status(400).json({status: 400, message: "Not matching Password"})
 }
 
 exports.updateUser = async function (req, res, next) {

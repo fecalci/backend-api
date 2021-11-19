@@ -43,13 +43,15 @@ exports.createBebe = async function (req, res, next) {
         peso: req.body.peso,
         altura: req.body.altura,
         fecha: req.body.fecha,
-        enfermedad:[""],
-        alergias:[""]
+        enfermedad:req.body.enfermedad.split(','),
+        alergias:req.body.alergias.split(','),
+        cabeza:req.body.cabeza,
+        sangre:req.body.sangre
     }
         try {
             // Calling the Service function with the new object from the Request Body
-            var createdUser = await BebeService.createBebe(User)
-            return res.status(201).json({createdUser, message: "Succesfully Created Bebe"})
+            var createdBebe = await BebeService.createBebe(User)
+            return res.status(201).json({createdBebe, message: "Succesfully Created Bebe"})
         } catch (e) {
             //Return an Error Response Message with Code and the Error Message.
             console.log(e)
