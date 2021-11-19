@@ -7,7 +7,7 @@ var Authorization = require('../../auth/authorization');
 // Authorize each API with middleware and map to the Controller Functions
 /* GET users listing. */
 router.post('/', VacunaController.createVacuna)
-//router.put('/',VacunaController.getVacuna)
+router.put('/',VacunaController.getVacuna)
 
 
 // Export the Router
