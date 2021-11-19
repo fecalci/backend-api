@@ -24,7 +24,7 @@ router.post('/imgUserByMail',Authorization,UserController.getImagenUserByMail)
 router.post('/sendMail',MailController.sendEmail)
 router.post('/bebe',BebeController.createBebe)
 router.put('/bebe',BebeController.getBebes)
-router.put('/bebe',BebeController.getBebeByName)
+router.put('/bebeName',BebeController.getBebeByName)
 
 
 

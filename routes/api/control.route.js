@@ -7,8 +7,8 @@ var Authorization = require('../../auth/authorization');
 // Authorize each API with middleware and map to the Controller Functions
 /* GET users listing. */
 router.post('/', ControlPediatricoController.createControl)
-router.get('/',ControlPediatricoController.getControl)
-router.get('/last',ControlPediatricoController.getLastControl)
+router.put('/',ControlPediatricoController.getControl)
+router.put('/last',ControlPediatricoController.getLastControl)
 
 
 
