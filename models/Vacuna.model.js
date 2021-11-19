@@ -13,7 +13,7 @@ var VacunaSchema = new mongoose.Schema({
 
 })
 
-BebeSchema.plugin(mongoosePaginate)
+VacunaSchema.plugin(mongoosePaginate)
 const Vacuna = mongoose.model('Vacuna', VacunaSchema)
 
 module.exports = Vacuna;

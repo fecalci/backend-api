@@ -28,9 +28,8 @@ exports.getBebes = async function (query, page, limit) {
     }
 }
 
-exports.createBebe = async function (user) {
+exports.createVacuna = async function (vacuna) {
     // Creating a new Mongoose Object by using the new keyword
-    
     var newVacuna = new Vacuna({
         email: vacuna.email,
         bebe:vacuna.bebe,
@@ -40,16 +39,15 @@ exports.createBebe = async function (user) {
         dosis:vacuna.dosis,
         edad:vacuna.edad
     })
-    //falta Ver como guardarlo
     try {
         // Saving the User 
-        var savedUser = await newUser.save();
+        var savedVacuna = await newVacuna.save();
         var token = jwt.sign({
-            id: savedUser._id
+            id: savedVacuna._id
         }, process.env.SECRET, {
             expiresIn: 86400 // expires in 24 hours
         });
-        return token;
+        return (token, savedVacuna);
     } catch (e) {
         // return a Error message describing the reason 
         console.log(e)    
