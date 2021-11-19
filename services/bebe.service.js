@@ -39,7 +39,9 @@ exports.createBebe = async function (user) {
         altura: user.altura,
         enfermedad: user.enfermedad,
         alergias:user.alergias,
-        fecha: user.fecha
+        fecha: user.fecha,
+        cabeza:user.cabeza,
+        sangre:user.sangre
     })
     //falta Ver como guardarlo
     try {
@@ -50,7 +52,10 @@ exports.createBebe = async function (user) {
         }, process.env.SECRET, {
             expiresIn: 86400 // expires in 24 hours
         });
-        return token;
+        var _details = await Bebe.findOne({
+            email: user.email,name:user.name
+        });
+        return {token:token, user:_details};
     } catch (e) {
         // return a Error message describing the reason 
         console.log(e)    
