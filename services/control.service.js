@@ -53,11 +53,13 @@ exports.createControl = async function (user) {
     var newUser = new Control({
         email: user.email,
         name: user.name,
-        sexo: user.sexo,
         peso: user.peso,
         altura: user.altura,
-        alergias:user.alergias,
-        enfermedad:user.enfermedad,
+        cabeza: user.cabeza,
+        medicamento:user.medicamento,
+        observacion:user.observacion,
+        resultado:user.resultado,
+        estudio:user.estudio,
         fecha_control: user.fecha_control,
 
     })
@@ -70,7 +72,11 @@ exports.createControl = async function (user) {
         }, process.env.SECRET, {
             expiresIn: 86400 // expires in 24 hours
         });
-        return token;
+        var _details = await Control.findOne({
+            email: user.email,name:user.name
+        });
+
+        return {token:token, user:_details};
     } catch (e) {
         // return a Error message describing the reason 
         console.log(e)    

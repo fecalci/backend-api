@@ -81,16 +81,7 @@ exports.updateBebe = async function (user) {
     //Edit the User Object
     oldUser.peso = user.peso
     oldUser.altura = user.altura
-
-    //agrega enfermedad nueva
-    user.enfermedad.map((enfer) => {
-        oldUser.enfermedad.push(enfer)
-    })
-
-    //agrega alergia nueva
-    user.alergias.map((alergia) => {
-        oldUser.alergias.push(alergia)
-    })
+    oldUser.cabeza=user.cabeza
 
     try {
         var savedUser = await oldUser.save()

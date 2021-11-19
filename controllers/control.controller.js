@@ -55,25 +55,30 @@ exports.createControl = async function (req, res, next) {
     var User = {
         email: req.body.email,
         name: req.body.name,
-        sexo: req.body.sexo,
+        cabeza: req.body.cabeza,
         peso: req.body.peso,
         altura: req.body.altura,
         fecha_control: req.body.fecha_control,
-        alergias:req.body.alergias,
-        enfermedad:req.body.enfermedad
+        medicamento:req.body.medicamento,
+        observacion:req.body.observacion,
+        resultado:req.body.resultado,
+        estudio:req.body.estudio,
     }
         try {
             // Calling the Service function with the new object from the Request Body
-            var createdUser = await ControlService.createControl(User)
             var lastUser=await ControlService.getLastControl(User)
-            var parts=User.fecha_control.split('-');
-            var mydate = new Date(parts[0], parts[1] - 1, parts[2]);
-            if (lastUser.fecha_control<mydate)
+            //if (lastUser.fecha_control>User.fecha_control){
+                var createdControl = await ControlService.createControl(User)
                 var UpdateUser= await BebeService.updateBebe(User)
-            return res.status(201).json({createdUser, message: "Succesfully Created Control"})
+            //}
+            
+            //else{
+            //        var createdControl = await ControlService.createControl(User)
+            //    }
+            return res.status(201).json({createdControl, message: "Succesfully Created Control"})
         } catch (e) {
             //Return an Error Response Message with Code and the Error Message.
             console.log(e)
-            return res.status(400).json({status: 400, message: "Control Creation was Unsuccesfull"})
+            return res.status(400).json({status: 400, message: "Control Creation was succesfull not replaced"})
         }
 }
