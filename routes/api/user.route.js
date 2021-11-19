@@ -23,8 +23,8 @@ router.post('/uploadImg',UploadController.uploadFilesImgUser);
 router.post('/imgUserByMail',Authorization,UserController.getImagenUserByMail)
 router.post('/sendMail',MailController.sendEmail)
 router.post('/bebe',BebeController.createBebe)
-router.get('/bebe',BebeController.getBebes)
-router.get('/bebe',BebeController.getBebeByName)
+router.put('/bebe',BebeController.getBebes)
+router.put('/bebeName',BebeController.getBebeByName)
 
 
 

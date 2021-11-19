@@ -19,6 +19,7 @@ exports.getBebes = async function (query, page, limit) {
         console.log("Query",query)
         var Users = await Bebe.paginate(query, options)
         // Return the Userd list that was retured by the mongoose promise
+        console.log(Users)
         return Users;
 
     } catch (e) {
@@ -80,16 +81,7 @@ exports.updateBebe = async function (user) {
     //Edit the User Object
     oldUser.peso = user.peso
     oldUser.altura = user.altura
-
-    //agrega enfermedad nueva
-    user.enfermedad.map((enfer) => {
-        oldUser.enfermedad.push(enfer)
-    })
-
-    //agrega alergia nueva
-    user.alergias.map((alergia) => {
-        oldUser.alergias.push(alergia)
-    })
+    oldUser.cabeza=user.cabeza
 
     try {
         var savedUser = await oldUser.save()

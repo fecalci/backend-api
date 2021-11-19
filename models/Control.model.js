@@ -5,11 +5,13 @@ var mongoosePaginate = require('mongoose-paginate')
 var ControlSchema = new mongoose.Schema({
     email: String,
     name: String,
-    sexo: String,
+    observacion: String,
     peso: String,
     altura: String,
-    alergias:Array,
-    enfermedad:Array    ,
+    cabeza:String,
+    medicamento:String,
+    estudio:String,
+    resultado:String,
     fecha_control: Date
 })
 

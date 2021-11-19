@@ -7,8 +7,8 @@ var jwt = require('jsonwebtoken');
 _this = this
 
 // Async function to get the User List
-exports.getBebes = async function (query, page, limit) {
-
+exports.getVacunas = async function (query, page, limit) {
+    console.log("Entro get vacunas")
     // Options setup for the mongoose paginate
     var options = {
         page,
@@ -17,7 +17,7 @@ exports.getBebes = async function (query, page, limit) {
     // Try Catch the awaited promise to handle the error 
     try {
         console.log("Query",query)
-        var Users = await Bebe.paginate(query, options)
+        var Users = await Vacuna.paginate(query, options)
         // Return the Userd list that was retured by the mongoose promise
         return Users;
 
@@ -28,9 +28,8 @@ exports.getBebes = async function (query, page, limit) {
     }
 }
 
-exports.createBebe = async function (user) {
+exports.createVacuna = async function (vacuna) {
     // Creating a new Mongoose Object by using the new keyword
-    
     var newVacuna = new Vacuna({
         email: vacuna.email,
         bebe:vacuna.bebe,
@@ -40,16 +39,15 @@ exports.createBebe = async function (user) {
         dosis:vacuna.dosis,
         edad:vacuna.edad
     })
-    //falta Ver como guardarlo
     try {
         // Saving the User 
-        var savedUser = await newUser.save();
+        var savedVacuna = await newVacuna.save();
         var token = jwt.sign({
-            id: savedUser._id
+            id: savedVacuna._id
         }, process.env.SECRET, {
             expiresIn: 86400 // expires in 24 hours
         });
-        return token;
+        return (token, savedVacuna);
     } catch (e) {
         // return a Error message describing the reason 
         console.log(e)    

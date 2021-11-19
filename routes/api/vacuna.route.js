@@ -1,16 +1,13 @@
 var express = require('express')
 var router = express.Router()
-var ControlPediatricoController = require('../../controllers/control.controller');
+var VacunaController = require('../../controllers/vacuna.controller');
 var Authorization = require('../../auth/authorization');
 
 
 // Authorize each API with middleware and map to the Controller Functions
 /* GET users listing. */
-router.post('/', ControlPediatricoController.createControl)
-router.put('/',ControlPediatricoController.getControl)
-router.put('/last',ControlPediatricoController.getLastControl)
-
-
+router.post('/', VacunaController.createVacuna)
+router.put('/',VacunaController.getVacuna)
 
 
 // Export the Router
