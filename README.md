@@ -12,7 +12,7 @@ Luego de haber clonado el repositorio:
 
 ```npm install``` para instalar las dependencias necesarias
 
-```npm start``` para poder levantar el front end
+```npm start``` para poder levantar el back end
 
 
 ### Endpoints
