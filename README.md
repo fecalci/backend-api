@@ -5,4 +5,4 @@ Una vez clonado, correr los siguientes comandos:
 
 ### `npm install` para instalar las dependencias necesarias
 
-### `npm start` para poder levantar el front end
+### `npm start` para poder levantar el back end
